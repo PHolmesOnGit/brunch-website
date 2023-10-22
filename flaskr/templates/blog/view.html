@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}"{{ post['title'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <h1>Title</h1>
+    <h1>Description</h1>
+    <label>{{ request.form['description'] or post['description'] }}</label>
+    <h1>Ingredients</h1>
+    <label>{{ request.form['ingredients'] or post['ingredients'] }}</label>
+    <h1>Instructions</h1>
+    <label>{{ request.form['instructions'] or post['instructions'] }}</label>
+    <h1>Meal Type</h1>
+    <label>{{ request.form['meal_type'] or post['meal_type'] }}</label>
+    <h1>Time In Minutes</h1>
+    <label>{{ request.form['time_in_minutes'] or post['time_in_minutes'] }}</label>
+    <h1>Type</h1>
+    <label>{{ request.form['type'] or post['type'] }}</label>
+  </form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ post['title'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">Title</label>
+    <input name="title" id="title"
+      value="{{ request.form['title'] or post['title'] }}" required>
+    <label for="description">Description</label>
+    <textarea name="description" id="description">{{ request.form['description'] or post['description'] }}</textarea>
+    <label for="ingredients">Ingredients</label>
+    <textarea name="ingredients" id="ingredients">{{ request.form['ingredients'] or post['ingredients'] }}</textarea>
+    <label for="instructions">Instructions</label>
+    <textarea name="instructions" id="instructions">{{ request.form['instructions'] or post['instructions'] }}</textarea>
+    <label for="meal_type">Meal Type</label>
+    <textarea name="meal_type" id="meal_type">{{ request.form['meal_type'] or post['meal_type'] }}</textarea>
+    <label for="time_in_minutes">Time In Minutes</label>
+    <textarea name="time_in_minutes" id="time_in_minutes">{{ request.form['time_in_minutes'] or post['time_in_minutes'] }}</textarea>
+    <label for="type">Type</label>
+    <textarea name="type" id="type">{{ request.form['type'] or post['type'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}
